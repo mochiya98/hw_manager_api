@@ -1,0 +1,27 @@
+{
+  "name": "hw_manager_api",
+  "version": "1.0.0",
+  "private": true,
+  "main": "start.js",
+  "scripts": {
+    "start": "node ./start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mongod": "mongod --config mongodb/mongod.conf"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "debug": "^3.1.0",
+    "express": "^4.16.3",
+    "express-openapi-validate": "git+https://github.com/mochiya98/express-openapi-validate.git",
+    "htmlspecialchars": "^1.0.5",
+    "js-yaml": "^3.11.0",
+    "method-override": "^2.3.10",
+    "mongodb": "^3.0.7",
+    "mongoose": "^5.0.16",
+    "morgan": "~1.9.0",
+    "npm": "^6.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1"
+  }
+}

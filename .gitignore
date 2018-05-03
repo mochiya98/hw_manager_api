@@ -1,0 +1,6 @@
+*.log
+node_modules/
+mongodb/data/*
+!mongodb/data/.gitkeep
+mongodb/log/*
+!mongodb/log/.gitkeep

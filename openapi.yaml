@@ -1,0 +1,244 @@
+openapi: 3.0.1
+servers:
+  - url: 'http://127.0.0.1:3014/api/v1/hw_manager'
+info:
+  description: '<img src="icon-hwman.svg" width="30%">  
+  [mochiya98/hw_manager_api](https://github.com/mochiya98/hw_manager_api)'
+  version: 1.0.0
+  title: HW Manager API
+  license:
+    name: The MIT License
+    url: 'https://opensource.org/licenses/MIT'
+tags:
+  - name: hws
+    description: homeworks
+paths:
+  /hws:
+    get:
+      tags:
+        - hws
+      summary: 'Get all homeworks'
+      operationId: getAllHomeworks
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    additionalProperties:
+                      $ref: '#/components/schemas/HomeworkResponse'
+              examples:
+                foo:
+                  value: {
+                    "result":{
+                      "87a31500-10d4-4264-b332-77b2b0e92a6c":{
+                        "comments":["gaog"],
+                        "id":"87a31500-10d4-4264-b332-77b2b0e92a6c",
+                        "expire":17659,
+                        "no":1,
+                        "s_code":"IW31",
+                        "title":"主題未設定"
+                      }
+                    }
+                  }
+        '500':
+          $ref: '#/components/responses/500ErrorResponse'
+  '/hws/{id}':
+    parameters:
+    - $ref: '#/components/parameters/id'
+    get:
+      tags:
+        - hws
+      summary: 'Get homework'
+      operationId: getHomework
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: '#/components/schemas/HomeworkResponse'
+        '400':
+          $ref: '#/components/responses/400ErrorResponse'
+        '500':
+          $ref: '#/components/responses/500ErrorResponse'
+    put:
+      tags:
+        - hws
+      requestBody:
+        description: 'homework detail'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HomeworkSend'
+      summary: 'Add/Edit homework'
+      operationId: updateHomework
+      responses:
+        '200':
+          $ref: '#/components/responses/200ResultResponse'
+        '400':
+          $ref: '#/components/responses/400ErrorResponse'
+        '500':
+          $ref: '#/components/responses/500ErrorResponse'
+    delete:
+      tags:
+        - hws
+      summary: 'Remove homework'
+      operationId: removeHomework
+      responses:
+        '200':
+          $ref: '#/components/responses/200ResultResponse'
+        '400':
+          $ref: '#/components/responses/400ErrorResponse'
+        '500':
+          $ref: '#/components/responses/500ErrorResponse'
+  '/hws/{id}/comments/{comment_id}':
+    parameters:
+    - $ref: '#/components/parameters/id'
+    - $ref: '#/components/parameters/comment_id'
+    put:
+      tags:
+        - hws
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  $ref: '#/components/schemas/hw_comment'
+      summary: 'Add/Edit comment to homework'
+      operationId: updateHomeworkComment
+      responses:
+        '200':
+          $ref: '#/components/responses/200ResultResponse'
+        '400':
+          $ref: '#/components/responses/400ErrorResponse'
+        '500':
+          $ref: '#/components/responses/500ErrorResponse'
+    delete:
+      tags:
+        - hws
+      summary: 'remove comment from homework'
+      operationId: removeHomeworkComment
+      responses:
+        '200':
+          $ref: '#/components/responses/200ResultResponse'
+        '400':
+          $ref: '#/components/responses/400ErrorResponse'
+        '500':
+          $ref: '#/components/responses/500ErrorResponse'
+components:
+  parameters:
+    id:
+        name: id
+        in: path
+        description: uuid of the homework
+        required: true
+        schema:
+          type: string
+          format: uuid
+    comment_id:
+        name: comment_id
+        in: path
+        description: uuid of the comment
+        required: true
+        schema:
+          type: string
+          format: uuid
+  responses:
+    200ResultResponse:
+      description: 'OK'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: OK
+    400ErrorResponse:
+      description: 'Bad Request'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: ErrorMessage
+                description: ErrorMessage
+    500ErrorResponse:
+      description: 'Internal Server Error'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: ErrorMessage
+                description: ErrorMessage
+  schemas:
+    hw_id:
+      type: string
+      format: uuid
+      example: '8ffa1faa-53fd-46be-805b-04d9281ef86e'
+    hw_no:
+      type: integer
+      format: int64
+      minimum: 1
+      maximum: 99
+    hw_s_code:
+      type: string
+      example: IW33
+    hw_title:
+      type: string
+      example: 課題主題
+    hw_expire:
+      type: number
+      format: int64
+      description: UnixDate
+      example: 16000
+    hw_comment:
+      type: string
+      example: foobar
+    HomeworkResponse:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/hw_id'
+        no:
+          $ref: '#/components/schemas/hw_no'
+        s_code:
+          $ref: '#/components/schemas/hw_s_code'
+        title:
+          $ref: '#/components/schemas/hw_title'
+        expire:
+          $ref: '#/components/schemas/hw_expire'
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/hw_comment'
+    HomeworkSend:
+      type: object
+      properties:
+        no:
+          $ref: '#/components/schemas/hw_no'
+        s_code:
+          $ref: '#/components/schemas/hw_s_code'
+        title:
+          $ref: '#/components/schemas/hw_title'
+        expire:
+          $ref: '#/components/schemas/hw_expire'
+
