@@ -142,7 +142,7 @@ r = requests.get(<span class="hljs-string">'http://127.0.0.1:3014/api/v1/hw_mana
 
 <span class="hljs-keyword">print</span> r.json()
 
-</code></pre><p><code>GET /hws/{id}</code></p><p><em>Get homework</em></p><h3 id="getHomework-parameters">Parameters</h3><table><thead><tr><th>Parameter</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td>id</td><td>path</td><td>string(uuid)</td><td>true</td><td>uuid of the homework</td></tr></tbody></table><blockquote><p>Example responses</p></blockquote><pre class="highlight tab tab-json"><code>{
+</code></pre><p><code>GET /hws/{id}</code></p><p><em>Get a homework</em></p><h3 id="getHomework-parameters">Parameters</h3><table><thead><tr><th>Parameter</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td>id</td><td>path</td><td>string(uuid)</td><td>true</td><td>uuid of the homework</td></tr></tbody></table><blockquote><p>Example responses</p></blockquote><pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">"result"</span>: {
     <span class="hljs-attr">"id"</span>: <span class="hljs-string">"8ffa1faa-53fd-46be-805b-04d9281ef86e"</span>,
     <span class="hljs-attr">"no"</span>: <span class="hljs-number">1</span>,
@@ -231,7 +231,7 @@ r = requests.put(<span class="hljs-string">'http://127.0.0.1:3014/api/v1/hw_mana
 
 <span class="hljs-keyword">print</span> r.json()
 
-</code></pre><p><code>PUT /hws/{id}</code></p><p><em>Add/Edit homework</em></p><blockquote><p>Body parameter</p></blockquote><pre class="highlight tab tab-json"><code>{
+</code></pre><p><code>PUT /hws/{id}</code></p><p><em>Add/Edit a homework</em></p><blockquote><p>Body parameter</p></blockquote><pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">"no"</span>: <span class="hljs-number">1</span>,
   <span class="hljs-attr">"s_code"</span>: <span class="hljs-string">"IW33"</span>,
   <span class="hljs-attr">"title"</span>: <span class="hljs-string">"課題主題"</span>,
@@ -310,7 +310,7 @@ r = requests.delete(<span class="hljs-string">'http://127.0.0.1:3014/api/v1/hw_m
 
 <span class="hljs-keyword">print</span> r.json()
 
-</code></pre><p><code>DELETE /hws/{id}</code></p><p><em>Remove homework</em></p><h3 id="removeHomework-parameters">Parameters</h3><table><thead><tr><th>Parameter</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td>id</td><td>path</td><td>string(uuid)</td><td>true</td><td>uuid of the homework</td></tr></tbody></table><blockquote><p>Example responses</p></blockquote><pre class="highlight tab tab-json"><code>{
+</code></pre><p><code>DELETE /hws/{id}</code></p><p><em>Remove a homework</em></p><h3 id="removeHomework-parameters">Parameters</h3><table><thead><tr><th>Parameter</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td>id</td><td>path</td><td>string(uuid)</td><td>true</td><td>uuid of the homework</td></tr></tbody></table><blockquote><p>Example responses</p></blockquote><pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">"result"</span>: {
     <span class="hljs-attr">"status"</span>: <span class="hljs-string">"OK"</span>
   }
@@ -389,7 +389,7 @@ r = requests.put(<span class="hljs-string">'http://127.0.0.1:3014/api/v1/hw_mana
 
 <span class="hljs-keyword">print</span> r.json()
 
-</code></pre><p><code>PUT /hws/{id}/comments/{comment_id}</code></p><p><em>Add/Edit comment to homework</em></p><blockquote><p>Body parameter</p></blockquote><pre class="highlight tab tab-json"><code>{
+</code></pre><p><code>PUT /hws/{id}/comments/{comment_id}</code></p><p><em>Add/Edit comment to a homework</em></p><blockquote><p>Body parameter</p></blockquote><pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">"comment"</span>: <span class="hljs-string">"foobar"</span>
 }
 </code></pre><h3 id="updateHomeworkComment-parameters">Parameters</h3><table><thead><tr><th>Parameter</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td>body</td><td>body</td><td>object</td><td>false</td><td>-</td></tr><tr><td>- comment</td><td>body</td><td><a href="#schemahw_comment">hw_comment</a></td><td>false</td><td>-</td></tr><tr><td>id</td><td>path</td><td>string(uuid)</td><td>true</td><td>uuid of the homework</td></tr><tr><td>comment_id</td><td>path</td><td>string(uuid)</td><td>true</td><td>uuid of the comment</td></tr></tbody></table><blockquote><p>Example responses</p></blockquote><pre class="highlight tab tab-json"><code>{
@@ -465,7 +465,7 @@ r = requests.delete(<span class="hljs-string">'http://127.0.0.1:3014/api/v1/hw_m
 
 <span class="hljs-keyword">print</span> r.json()
 
-</code></pre><p><code>DELETE /hws/{id}/comments/{comment_id}</code></p><p><em>remove comment from homework</em></p><h3 id="removeHomeworkComment-parameters">Parameters</h3><table><thead><tr><th>Parameter</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td>id</td><td>path</td><td>string(uuid)</td><td>true</td><td>uuid of the homework</td></tr><tr><td>comment_id</td><td>path</td><td>string(uuid)</td><td>true</td><td>uuid of the comment</td></tr></tbody></table><blockquote><p>Example responses</p></blockquote><pre class="highlight tab tab-json"><code>{
+</code></pre><p><code>DELETE /hws/{id}/comments/{comment_id}</code></p><p><em>Remove comment from a homework</em></p><h3 id="removeHomeworkComment-parameters">Parameters</h3><table><thead><tr><th>Parameter</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td>id</td><td>path</td><td>string(uuid)</td><td>true</td><td>uuid of the homework</td></tr><tr><td>comment_id</td><td>path</td><td>string(uuid)</td><td>true</td><td>uuid of the comment</td></tr></tbody></table><blockquote><p>Example responses</p></blockquote><pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">"result"</span>: {
     <span class="hljs-attr">"status"</span>: <span class="hljs-string">"OK"</span>
   }

@@ -53,7 +53,7 @@ paths:
     get:
       tags:
         - hws
-      summary: 'Get homework'
+      summary: 'Get a homework'
       operationId: getHomework
       responses:
         '200':
@@ -78,7 +78,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/HomeworkSend'
-      summary: 'Add/Edit homework'
+      summary: 'Add/Edit a homework'
       operationId: updateHomework
       responses:
         '200':
@@ -90,7 +90,7 @@ paths:
     delete:
       tags:
         - hws
-      summary: 'Remove homework'
+      summary: 'Remove a homework'
       operationId: removeHomework
       responses:
         '200':
@@ -114,7 +114,7 @@ paths:
               properties:
                 comment:
                   $ref: '#/components/schemas/hw_comment'
-      summary: 'Add/Edit comment to homework'
+      summary: 'Add/Edit comment to a homework'
       operationId: updateHomeworkComment
       responses:
         '200':
@@ -126,7 +126,7 @@ paths:
     delete:
       tags:
         - hws
-      summary: 'remove comment from homework'
+      summary: 'Remove comment from a homework'
       operationId: removeHomeworkComment
       responses:
         '200':
