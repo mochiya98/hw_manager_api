@@ -14,11 +14,11 @@ WORKDIR $HOME/hw_manager_api
 COPY package*.json ./
 RUN npm i
 
-COPY . $HOME/hw_manager_api
+COPY . ./
 
 RUN chown -R mochiya98:mochiya98 $HOME/*
 USER mochiya98
 
-RUN ls -l $HOME/hw_manager_api/
+RUN ls -l
 
 CMD ["npm", "start"]
