@@ -9,7 +9,8 @@ Express(node)+mongodb
 
 ## API Specification
 [HW Manager API](https://mochiya98.github.io/hw_manager_api/)
-## Run Server
+
+## Run Server (native)
 > mongodb installation required  
 using local data, dont'worry about overwriting.  
 ```sh
@@ -17,4 +18,11 @@ git clone git@github.com:mochiya98/hw_manager_api.git
 cd hw_manager_api
 npm i
 npm start
+```
+
+## Run Server (docker)
+```sh
+git clone git@github.com:mochiya98/hw_manager_api.git
+cd hw_manager_api
+sudo docker-compose up
 ```
