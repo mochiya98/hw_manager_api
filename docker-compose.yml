@@ -1,0 +1,10 @@
+hw_manager_api:
+  build: .
+  ports:
+    - '3013:3013'
+    - '3014:3014'
+  volumes:
+    - .:/home/mochiya98/hw_manager_api
+    - /home/mochiya98/hw_manager_api/mongodb/data
+    - /home/mochiya98/hw_manager_api/mongodb/log
+    - /home/mochiya98/hw_manager_api/node_modules
