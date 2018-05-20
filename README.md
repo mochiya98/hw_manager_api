@@ -12,6 +12,7 @@ Express(node)+mongodb
 
 ## Run Server (native)
 > mongodb installation required  
+
 using local data, dont'worry about overwriting.  
 ```sh
 git clone git@github.com:mochiya98/hw_manager_api.git
@@ -21,6 +22,9 @@ npm start
 ```
 
 ## Run Server (docker)
+> maybe doesn't work now.  
+> because an error occur on git module.  
+> (published module has a bug... i'm waiting to merge pull request.)  
 ```sh
 git clone git@github.com:mochiya98/hw_manager_api.git
 cd hw_manager_api
