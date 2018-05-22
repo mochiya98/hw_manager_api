@@ -8,17 +8,16 @@ RUN echo 'http://dl-3.alpinelinux.org/alpine/edge/community' >> /etc/apk/reposit
     apk upgrade --update && \ 
     apk add mongodb git openssh && \
     rm -rf /var/lib/apt/lists/* && \
-    rm /var/cache/apk/*
+    rm /var/cache/apk/* && \
+    mkdir /home/mochiya98/hw_manager_api && \
+    chown -R mochiya98:mochiya98 $HOME/*
 
 WORKDIR $HOME/hw_manager_api
-COPY package*.json ./
-RUN npm i
-
-COPY . ./
-
-RUN chown -R mochiya98:mochiya98 $HOME/*
 USER mochiya98
 
-RUN ls -l
+COPY --chown=mochiya98:mochiya98 package*.json ./
+RUN npm i && npm cache clean -f
+
+COPY --chown=mochiya98:mochiya98 . ./
 
 CMD ["npm", "start"]
