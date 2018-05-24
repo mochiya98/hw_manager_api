@@ -9,7 +9,7 @@ RUN echo 'http://dl-3.alpinelinux.org/alpine/edge/community' >> /etc/apk/reposit
     apk add mongodb git openssh && \
     rm -rf /var/lib/apt/lists/* && \
     rm /var/cache/apk/* && \
-    mkdir /home/mochiya98/hw_manager_api && \
+    mkdir $HOME/hw_manager_api && \
     chown -R mochiya98:mochiya98 $HOME/*
 
 WORKDIR $HOME/hw_manager_api
