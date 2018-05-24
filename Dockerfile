@@ -8,6 +8,8 @@ RUN echo 'http://dl-3.alpinelinux.org/alpine/edge/community' >> /etc/apk/reposit
     apk upgrade --update && \ 
     apk add mongodb && \
     rm -rf /var/lib/apt/lists/* && \
+    rm /usr/bin/mongoperf && \
+    rm /usr/bin/mongos && \
     rm /var/cache/apk/* && \
     mkdir $HOME/hw_manager_api && \
     chown -R mochiya98:mochiya98 $HOME/*
