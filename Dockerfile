@@ -6,7 +6,7 @@ ENV HOME=/home/mochiya98
 
 RUN echo 'http://dl-3.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories && \
     apk upgrade --update && \ 
-    apk add mongodb git openssh && \
+    apk add mongodb && \
     rm -rf /var/lib/apt/lists/* && \
     rm /var/cache/apk/* && \
     mkdir $HOME/hw_manager_api && \
