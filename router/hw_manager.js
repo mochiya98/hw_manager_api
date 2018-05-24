@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const {OpenApiValidator} = require("express-openapi-validate");
+const {OpenApiValidator} = require("@mochiya98/express-openapi-validate");
 const jsYaml = require("js-yaml");
 const openApiDocument = jsYaml.safeLoad(
 	fs.readFileSync("openapi.yaml", "utf-8")

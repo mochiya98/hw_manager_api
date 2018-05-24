@@ -9,10 +9,10 @@
     "mongod": "mongod --config mongodb/mongod.conf"
   },
   "dependencies": {
+    "@mochiya98/express-openapi-validate": "^0.4.1-mc98-1",
     "body-parser": "~1.18.2",
     "debug": "^3.1.0",
     "express": "^4.16.3",
-    "express-openapi-validate": "git+https://github.com/mochiya98/express-openapi-validate.git",
     "htmlspecialchars": "^1.0.5",
     "js-yaml": "^3.11.0",
     "method-override": "^2.3.10",
